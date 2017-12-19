@@ -5,6 +5,12 @@ import cssClasses from './Person.css';
 const Person = props => {
   // Destructuring
   const { name, age } = props;
+
+  const error = Math.random();
+  if (error > 0.7) {
+    throw new Error('Something went wrong');
+  }
+
   return (
     <div className={cssClasses.Person}>
       <p onClick={props.click}>
