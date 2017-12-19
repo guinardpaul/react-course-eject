@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import cssClasses from './Person.css';
+import WithClass from '../../../hoc/WithClass';
+import Aux from '../../../hoc/Aux';
+import wclass from '../../../hoc/wclass';
 
 class Person extends Component {
   constructor(props) {
@@ -19,7 +22,7 @@ class Person extends Component {
     // Destructuring
     const { name, age } = this.props;
     return (
-      <div className={cssClasses.Person}>
+      <Aux>
         <p onClick={this.props.click}>
           I'm {name} and i'm {age} years old
         </p>
@@ -29,9 +32,20 @@ class Person extends Component {
           onChange={this.props.changed}
           value={this.props.name}
         />
-      </div>
+      </Aux>
     );
+    /* return [
+      <p onClick={this.props.click}>
+        I'm {name} and i'm {age} years old
+      </p>,
+      <p>{this.props.children}</p>,
+      <input
+        type="text"
+        onChange={this.props.changed}
+        value={this.props.name}
+      />
+    ]; */
   }
 }
 
-export default Person;
+export default wclass(Person, cssClasses.Person);
